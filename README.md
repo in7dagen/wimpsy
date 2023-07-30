@@ -11,8 +11,9 @@ Geoffrey Stekelenburg <g.stekelenburg@outlook.com>
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
-3. Run `composer install` to install the necessary dependencies.
-4. Run the following command to start the server:
+3. Run `composer require wimpsy/wimpsy` to fetch the Wimpsy package.
+4. After fetching the package, run `composer install` to install the dependencies.
+5. Run the following command to start the server:
 
 ```bash
 php -S 0.0.0.0:8000 -d display_errors=0 -t ./public
