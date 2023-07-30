@@ -5,66 +5,125 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Welcome to Wimpsy</title>
+
+	<!-- Add Tailwind CSS CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
 		rel="stylesheet">
-	<style>
-		body {
-			background-color: #1a1a1a;
-		}
-	</style>
+
+	<!-- Add highlight.js CDN -->
+	<link rel="stylesheet"
+		href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
 </head>
 
-<body class="text-center py-16">
+<body class="dark:bg-black dark:text-white font-mono p-8">
+	<main>
+		<!-- Page Header with Magical Greeting -->
+		<h1 class="text-3xl font-bold mb-4">Welcome to Wimpsy! 🧙‍♂️🌌</h1>
 
-	<h1 class="text-4xl font-bold text-green-400">👋 Welcome to Wimpsy! 🧙‍♂️</h1>
+		<!-- Introduction to Wimpsy -->
+		<p class="text-lg">Wimpsy is your magical toolset for crafting captivating web applications.
+			🌌🌟 It sets up a middleware pipeline using the Symfony HttpFoundation component, where
+			each
+			middleware casts a spell on the incoming HTTP request, and together they shape the
+			mystical
+			HTTP response. 🚀🔮</p>
 
-	<p class="mt-6 text-lg text-gray-300 leading-7">Greetings, fellow wizard! 🪄✨</p>
+		<!-- Begin Your Quest! -->
+		<h2 class="text-2xl font-bold mt-6 mb-4">Begin Your Quest! 🚀🌌</h2>
+		<p class="text-lg">To embark on your web development quest, equip your code editor with
+			powerful
+			spells, and create enchanting web applications! 🌌🔮</p>
 
-	<p class="mt-4 text-lg text-gray-300 leading-7">Wimpsy is your magical toolset, crafted with
-		ancient code and modern enchantments. 🌌🌟</p>
+		<!-- Features -->
+		<h3 class="text-xl font-bold mt-4 mb-2">Features 🪄✨</h3>
+		<ul class="list-disc list-inside">
+			<li>Middleware Pipeline: Wimpsy sets up a middleware pipeline using the Symfony
+				HttpFoundation component. Each middleware in the pipeline casts its spell on the
+				incoming request, creating a magical journey through the codebase.</li>
+			<li>Enchanting Welcome Page: The welcome page of Wimpsy greets you with its mystical
+				charm
+				and guides you on your adventure through the realm of web development.</li>
+		</ul>
 
-	<p class="mt-4 text-lg text-gray-300 leading-7">As your HTTP request weaves through the mystical
-		pipeline, spells of power and wisdom shape the response, creating captivating web
-		applications. 🚀🔮</p>
+		<!-- Installation -->
+		<h3 class="text-xl font-bold mt-4 mb-2">Installation 🧙‍♀️🔧</h3>
+		<p class="text-lg">To begin your journey with Wimpsy, execute the following spells:</p>
+		<ol class="list-decimal list-inside">
+			<li>Clone this enchanted repository:
+				<pre><code class="language-bash">git clone https://github.com/your-username/wimpsy.git</code></pre>
+			</li>
+			<li>Cast the Composer spell to install the required dependencies:
+				<pre><code class="language-bash">composer install</code></pre>
+			</li>
+			<li>Unleash the magic by running the local development server:
+				<pre><code class="language-bash">php -S 0.0.0.0:8000 -d display_errors=0 -t ./public</code></pre>
+			</li>
+		</ol>
 
-	<p class="mt-4 text-lg text-gray-300 leading-7">Add your own incantations to this enchanted
-		pipeline, unleashing the true potential of Wimpsy. The possibilities are limitless, and with
-		every development, new wonders will be revealed! 🌈✨</p>
+		<!-- Middleware Class Template -->
+		<h3 class="text-xl font-bold mt-4 mb-2">Middleware Class Template 🧙‍♂️📜</h3>
+		<pre><code class="language-php">&lt;?php
 
-	<h2 class="mt-10 text-2xl font-bold text-green-400">Join the Order of Web Wizards! 🧙‍♀️🧙‍♂️
-	</h2>
+namespace Wimpsy\Middleware;
 
-	<p class="mt-6 text-lg text-gray-300 leading-7">Step into the realm of web sorcery, where
-		simplicity meets power. 🪄✨</p>
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-	<p class="mt-6 text-lg text-gray-300 leading-7">Become a member of the Order of Web Wizards, and
-		together, we shall weave magnificent online experiences! 💻🌟</p>
+class EnchantedMiddleware
+{
+	public function __invoke(Request $request, callable $next): Response
+	{
+		$response = $next($request);
+		$response-&gt;headers-&gt;set('X-Magic-Power', 'Enchanted');
+		
+		return $response;
+	}
+}
+?&gt;</code></pre>
 
-	<h2 class="mt-10 text-2xl font-bold text-green-400">Unleash the Magic! 🔥🌟</h2>
+		<!-- Join the Order of Web Wizards -->
+		<h2 class="text-2xl font-bold mt-6 mb-4">Join the Order of Web Wizards! 🧙‍♀️🧙‍♂️</h2>
+		<p class="text-lg">Wimpsy is open-source magic, fueled by the passion of talented
+			developers. If
+			you find Wimpsy useful, consider joining the order and supporting its further
+			development!
+			🪄✨</p>
+		<a href="https://www.buymeacoffee.com/wimpsy" target="_blank"
+			class="inline-block mt-6 px-8 py-3 text-white bg-green-400 rounded hover:bg-green-500">Support
+			the Order ☕</a>
 
-	<p class="mt-6 text-lg text-gray-300 leading-7">Wimpsy is open-source magic, fueled by the
-		passion of talented developers. If you find Wimpsy useful, consider joining the order and
-		supporting its further development! 🪄✨</p>
+		<!-- Contribute Your Spells! -->
+		<h2 class="text-2xl font-bold mt-6 mb-4">Contribute Your Spells! 🧙‍♀️📚</h2>
+		<p class="text-lg">The Order of Web Wizards welcomes contributions from fellow enchanters!
+			To
+			contribute your spells to Wimpsy, follow these steps:</p>
+		<ol class="list-decimal list-inside">
+			<li>Fork the enchanted repository.</li>
+			<li>Create a new branch for your spell.</li>
+			<li>Make your magical changes.</li>
+			<li>Cast the spell of the pull request to merge your changes.</li>
+		</ol>
 
-	<a href="https://www.buymeacoffee.com/wimpsy" target="_blank"
-		class="inline-block mt-6 px-8 py-3 text-white bg-green-400 rounded hover:bg-green-500">Support
-		the Order ☕</a>
-
-	<div class="mt-12">
-		<img src="https://media.giphy.com/media/3oEjI0IHSlnx28hBtu/giphy.gif" alt="Wizard GIF"
-			class="w-40 h-40 rounded-full mx-auto">
-	</div>
-
-	<h2 class="mt-10 text-2xl font-bold text-green-400">Begin Your Quest! 🚀🌌</h2>
-
-	<p class="mt-6 text-lg text-gray-300 leading-7">Equip your code editor with powerful spells, and
-		embark on your quest to create enchanting web applications! 🌌🔮</p>
-
-	<div class="mt-8">
+		<!-- Begin Your Journey -->
+		<h2 class="text-2xl font-bold mt-6 mb-4">Begin Your Journey 🌌✨</h2>
+		<p class="text-lg">Embrace the magic of Wimpsy and begin your quest to create captivating
+			web
+			applications! 🌌🔮</p>
 		<a href="https://github.com/your-username/wimpsy" target="_blank"
-			class="text-green-400 hover:text-green-500">GitHub Repository 🪄✨</a>
-	</div>
+			class="text-lg underline hover:no-underline">Join the Order of Web Wizards 🪄✨</a>
 
+		<!-- Footer -->
+		<p class="text-lg mt-6">Inspired by ancient web technologies and powered by modern
+			development
+			tools. 🌌🔮🧙‍♂️</p>
+		<p class="text-lg">Simplicity is the key to everything. 🗝️✨</p>
+		<pre><code class="language-html">⚠️ Warning: Wimpsy is still under development, and more enchanting features will be revealed over time. Stay tuned for updates from the Order of Web Wizards! 🧙‍♀️🧙‍♂️⚠️</code></pre>
+		<p class="text-lg">Enjoy the magical journey with Wimpsy! 🧙‍♂️🌌✨🚀</p>
+	</main>
+
+	<!-- Add highlight.js script at the end of body -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 </body>
 
 </html>
