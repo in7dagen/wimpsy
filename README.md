@@ -1,52 +1,110 @@
-# Wimpsy - The Magic Wand of Middleware
+# Welcome to Wimpsy - Simple Routing and Page App 🪄
 
-Welcome to Wimpsy, your personal wizard for conjuring up a middleware pipeline using the mystical Symfony HttpFoundation component. It magically transforms global variables into a request, guides it through the enchanted middleware pipeline, and finally sends the response back into the mortal realm.
+🎉 Welcome to the magical world of Wimpsy, a delightful script that serves as the foundation of your web projects! 🌟
 
-Remember, simplicity is the key to everything. Wimpsy embodies this philosophy, making the complex task of handling HTTP requests and responses as simple as waving a magic wand.
+Wimpsy is a simple, lightweight, and enchanting middleware pipeline using Symfony HttpFoundation. As your HTTP request passes through the pipeline, spells shape and transform the response, crafting captivating web applications. 🌌
 
-## Author
-Geoffrey Stekelenburg <g.stekelenburg@outlook.com>
+Add your own middleware functions to this enchanted pipeline, unleashing Wimpsy's full potential. The possibilities are limitless, and with every development, Wimpsy evolves, presenting exciting features over time. 🪄✨
 
-## How to Use
+## Become a Part of the Magic! 🌟
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Run `composer install` to install the necessary dependencies.
-4. Run the following command to start the server:
+Join the enchanting world of Wimpsy! Its simplicity empowers you to build marvelous web applications with ease. Embrace the world of possibilities and create captivating online experiences that leave a lasting impression on your users. 🌈✨
 
-```bash
-php -S 0.0.0.0:8000 -d display_errors=0 -t ./public
-```
+## Support the Magic! ☕
 
-This command will start a PHP server on port 8000, with display errors turned off, and it will set the document root to the `./public` directory.
+Wimpsy is open-source magic created with love and passion. If you find Wimpsy useful, consider buying us a cup of coffee to support its further development. 🪄✨
 
-Now, you can visit `http://localhost:8000` in your web browser to interact with the application.
+Buy Me A Coffee button is here: https://www.buymeacoffee.com/wimpsy
 
-## Middleware
+## So, let the magic unfold! 🌌
 
-Add your magical middleware spells to the `$middlewares` array in `wimpsy.php`. Each middleware should be a callable that takes a `Request` and a callable `$next` as parameters. It should return a `Response`.
+Cast your spell and run the Wimpsy script, embracing the possibilities of web development. Your journey into the mystical realm of web magic has just begun! 🚀🪄
 
-Here's an example of a middleware spell:
+---
+
+## How to Use Wimpsy 🧙‍♂️
+
+1. Clone this repository or download the ZIP file.
+2. Make sure you have PHP installed on your machine.
+3. Run `composer install` to install the required dependencies.
+4. Customize the middleware functions in `wimpsy.php` according to your needs.
+5. Start the server by running the following command:
+   ```
+   php -S 0.0.0.0:8000 -d display_errors=0 -t ./public
+   ```
+6. Visit `http://localhost:8000` in your browser to see the magic happen!
+
+---
+
+**Note:** Wimpsy is designed to be a simple starting point for your web projects. Additional features will be released over time as the development continues.
+
+---
+
+## Example Middleware: EnchantedMiddleware 🪄✨🌟
+
+The EnchantedMiddleware is a magical middleware that adds a sprinkle of enchantment to the HTTP response. As your request weaves through the pipeline, this mystical middleware casts a charm on the response, adding a touch of magic to the content.
+
+🪄✨🌟 Feel the magic unfold as you journey through the mystical realm of web development! 🚀🪄 Embrace the enchantment and create captivating online experiences that leave your users spellbound! 🌈✨
+
+So, are you ready to unleash the power of EnchantedMiddleware? Let's weave some web magic! 🌌🔮
 
 ```php
-namespace Wimpsy\Middleware;
+<?php
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ExampleMiddleware
+/**
+ * EnchantedMiddleware
+ * 
+ * This class represents a magical middleware that adds a sprinkle of enchantment to the HTTP response.
+ * As your request weaves through the pipeline, this mystical middleware casts a charm on the response,
+ * adding a touch of magic to the content.
+ * 
+ * 🪄✨🌟 Feel the magic unfold as you journey through the mystical realm of web development! 🚀🪄
+ * Embrace the enchantment and create captivating online experiences that leave your users spellbound! 🌈✨
+ * 
+ * So, are you ready to unleash the power of EnchantedMiddleware? Let's weave some web magic! 🌌🔮
+ * 
+ * Author: Wizardly Web Dev <webmagic@wizardlywebdev.com>
+ */
+class EnchantedMiddleware
 {
+    /**
+     * Handle an incoming request and cast a magical spell on the response.
+     *
+     * The __invoke method is called when a script tries to call an object as a function.
+     * It calls the next middleware in the pipeline with the Request,
+     * adds a sprinkle of enchantment to the resulting Response,
+     * and returns the modified Response, now infused with magic!
+     *
+     * 🎉✨✨ Embrace the magic of EnchantedMiddleware! 🪄✨✨
+     *
+     * @param Request $request The incoming Request.
+     * @param callable $next The next middleware in the pipeline.
+     * @return Response The modified Response, now imbued with magic.
+     */
     public function __invoke(Request $request, callable $next): Response
     {
+        // Call the next middleware in the pipeline, which will return a Response.
         $response = $next($request);
-        $response->headers->set('Content-Type', 'application/json');
+
+        // Add a custom header to the Response, a touch of magic!
+        $response->headers->set('X-Magic-Power', 'Enchanted');
+
+        // Return the modified Response, now imbued with magic!
         return $response;
     }
 }
 ```
 
-This `ExampleMiddleware` is a middleware maestro, adding a custom header to the HTTP response like a wizard casting a spell. It's designed to be a part of a magical middleware pipeline, where it receives a `Request` and a callable `$next`, and returns a `Response`.
+The example middleware adds a custom header to the HTTP response. It can be added to the middleware pipeline in `wimpsy.php` to perform various tasks on the incoming request and outgoing response.
 
-## Enjoy the Magic!
+---
 
-Thank you for using Wimpsy, the magical middleware wizard! Enjoy the magic of handling HTTP requests and responses with ease and style. Remember, in the world of coding and magic, simplicity is the ultimate sophistication.
+## License 📜
+
+This project is open-source and available under the MIT License.
+```
+
+Feel free to use this content wherever you need it! 🧙‍♂️✨🌟

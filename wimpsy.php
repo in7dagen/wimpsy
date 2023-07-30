@@ -23,7 +23,8 @@ use Symfony\Component\HttpFoundation\Response;
 // It should return a Response.
 $middlewares = [
 	// Example middleware spell
-	\Wimpsy\Middleware\ExampleMiddleware::class,
+	\Wimpsy\Middleware\EnchantedMiddleware::class,
+	\Wimpsy\Middleware\RouterMiddleware::class,
 ];
 
 // Create a Request object from PHP's global variables.
@@ -43,7 +44,7 @@ $pipeline = array_reduce(
 	},
 	function (Request $request) {
 		// The initial $next is a callable that ignores its argument and returns a default Response.
-		return new Response(json_encode(['message' => 'Thank you for using Wimpsy, the magical middleware wizard!']));
+		return new Response('Page not found!', 404);
 	}
 );
 
