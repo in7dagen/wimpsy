@@ -1,55 +1,34 @@
 <?php
 
 /**
- * Wimpsy - The Magic Wand of Middleware
- * 
- * This script is your personal wizard, conjuring up a middleware pipeline using the mystical Symfony HttpFoundation component.
- * It magically transforms global variables into a request, guides it through the enchanted middleware pipeline,
- * and finally sends the response back into the mortal realm.
+ * This script is the entry point for the Wimpsy application.
+ * It sets up the middleware pipeline and handles the incoming request.
  * 
  * @author Geoffrey Stekelenburg <g.stekelenburg@outlook.com>
  */
 
-// Summon the autoload file to automatically conjure classes as they are needed.
+// Include the Composer autoloader.
+// This allows us to use the classes in the project without having to require them manually.
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Import the magical classes from the Symfony HttpFoundation component.
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+// Import the Wimpsy class from the Wimpsy namespace.
+use Wimpsy\Wimpsy;
 
-// Setup Middleware
-// Add your magical middleware spells to this array.
-// Each middleware should be a callable that takes a Request and a callable $next as parameters.
+// Define the middleware pipeline.
+// This is an array of fully qualified class names.
+// Each class should be invokable (i.e., have a __invoke method) and accept a Request and a callable $next as parameters.
 // It should return a Response.
 $middlewares = [
-	// Example middleware spell
+	// The EnchantedMiddleware adds a custom header to the response.
 	\Wimpsy\Middleware\EnchantedMiddleware::class,
+	// The RouterMiddleware routes the request to the appropriate controller based on the request URI.
 	\Wimpsy\Middleware\RouterMiddleware::class,
 ];
 
-// Create a Request object from PHP's global variables.
-$request = Request::createFromGlobals();
+// Create a new Wimpsy application with the defined middleware pipeline.
+$wimpsy = new Wimpsy($middlewares);
 
-// Create a magical middleware pipeline.
-// The pipeline is a callable that takes a Request and returns a Response.
-// It does this by starting with the last middleware in the array and wrapping each previous middleware around it.
-$pipeline = array_reduce(
-	array_reverse($middlewares),
-	function ($next, $middleware) {
-		return function (Request $request) use ($next, $middleware) {
-			// Call the middleware with the Request and the $next.
-			// If the middleware is an instance of a class, the __invoke method of that class will be called.
-			return (new $middleware)($request, $next);
-		};
-	},
-	function (Request $request) {
-		// The initial $next is a callable that ignores its argument and returns a default Response.
-		return new Response('Page not found!', 404);
-	}
-);
-
-// Pass the Request through the magical middleware pipeline to get a Response.
-$response = $pipeline($request);
-
-// Send the Response to the client.
-$response->send();
+// Handle the incoming request and send the response.
+// This will pass the request through each middleware in the pipeline in turn,
+// allowing each one to modify the request or the response as needed.
+$wimpsy->handle();
