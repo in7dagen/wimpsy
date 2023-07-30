@@ -1,0 +1,20 @@
+{
+    "name": "getneurotic/wimpsy",
+    "autoload": {
+        "psr-4": {
+            "Wimpsy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jóhannes Rónaldsson",
+            "email": "g.stekelenburg@outlook.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^6.3"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.3"
+    }
+}
